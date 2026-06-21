@@ -1,0 +1,158 @@
+{
+  "app_name": "Rangkul",
+  "personality": "1 iOS-Native Clean",
+  "personality_one_liner": "A calm, reassuring sanctuary that feels highly polished, using soft rounded corners, generous whitespace, and a low-stress visual style to reduce cognitive load while offering a clear path to professional support.",
+  "color": {
+    "surface": "#FFFFFF",
+    "onSurface": "#111827",
+    "surfaceSecondary": "#F9FAFB",
+    "onSurfaceSecondary": "#374151",
+    "surfaceTertiary": "#F3F4F6",
+    "onSurfaceTertiary": "#4B5563",
+    "surfaceInverse": "#1F2937",
+    "onSurfaceInverse": "#F9FAFB",
+    "brand": "#0D9488",
+    "brandPrimary": "#0F766E",
+    "onBrandPrimary": "#FFFFFF",
+    "brandSecondary": "#115E59",
+    "onBrandSecondary": "#FFFFFF",
+    "brandTertiary": "#CCFBF1",
+    "onBrandTertiary": "#0F766E",
+    "success": "#10B981",
+    "onSuccess": "#FFFFFF",
+    "warning": "#F59E0B",
+    "onWarning": "#FFFFFF",
+    "error": "#EF4444",
+    "onError": "#FFFFFF",
+    "info": "#0EA5E9",
+    "onInfo": "#FFFFFF",
+    "border": "#E5E7EB",
+    "borderStrong": "#D1D5DB",
+    "divider": "#F3F4F6"
+  },
+  "typography": {
+    "displayFontFamily": "Plus Jakarta Sans",
+    "textFontFamily": "Plus Jakarta Sans",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Use generous iOS-native rhythms. Content must never sit under notches or home indicators. Padding is crucial to avoid a cramped, dense dashboard feel.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 8,
+    "md": 16,
+    "lg": 24,
+    "pill": 999
+  },
+  "shadow_tier": "1",
+  "navigation": "bottom_tabs",
+  "icon_set": "Ionicons",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use on the Bottom Tab Bar.",
+      "Use on sticky headers when scrolling content passes underneath.",
+      "Use on the 'Poin Rangkul' card overlay to make it feel premium.",
+      "Use on full-screen modal scrims for Checkout Double Confirmation."
+    ],
+    "dont's": [
+      "Never use on form fields or primary text areas.",
+      "Do not over-stack blur surfaces. Keep it to max 2 blur surfaces per screen."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Patient Home",
+      "purpose": "A grounding entry point that lets users quickly log their mood, view rewards, and access core services.",
+      "states": {
+        "loading": "Centered teal spinner.",
+        "empty": "N/A - Home screen is always populated with services.",
+        "error": "Friendly error message 'Gagal memuat beranda' with a Retry button."
+      },
+      "layout": "Header: Greeting text + small avatar (top left), Notification bell (top right). Next: 'Poin Rangkul' glass-card showing points. Next: Mood Tracker section (horizontal row of large rounded pill-buttons for Happy/Neutral/Sad). Next: Services Grid (2x2 grid of brandTertiary-tinted icon cards). Bottom: Promo/News horizontal carousel."
+    },
+    {
+      "name": "Patient Checkout Flow",
+      "purpose": "Seamless, trustworthy flow to book a session.",
+      "states": {
+        "loading": "Skeleton UI for expert availability.",
+        "empty": "Illustration 'Tidak ada jadwal tersedia hari ini'.",
+        "error": "Error loading payment methods."
+      },
+      "layout": "Step 1: Select Date/Time in a horizontal calendar slider. Step 2: Method toggle (Zoom vs Clinic) in a Segmented Control. Step 3: Payment Selection List (rows of payment options with logo and radio button). Fixed Bottom Container: Glassmorphism bar with 'Lanjut Pembayaran' CTA. Triggers Double Confirmation bottom-sheet modal before final execution."
+    },
+    {
+      "name": "Patient Schedule",
+      "purpose": "View upcoming appointments and join them easily.",
+      "states": {
+        "loading": "List skeletons.",
+        "empty": "Illustration + 'Belum ada jadwal konsultasi. Yuk, mulai cari psikolog!' CTA.",
+        "error": "Gagal memuat jadwal."
+      },
+      "layout": "List of cards. Each card has Expert Avatar, Name, Category, Date/Time, and a prominent brandPrimary CTA button ('Join Zoom' or 'Lihat Rute Map' depending on method)."
+    },
+    {
+      "name": "Expert Home",
+      "purpose": "A quick operational dashboard for the psychologist to manage their status and view today's workload.",
+      "states": {
+        "loading": "Skeleton stats.",
+        "empty": "N/A.",
+        "error": "Gagal memuat dashboard."
+      },
+      "layout": "Header: Expert Name + Role. Top-right: Large 'Status Aktif' Switch (online/offline). Middle: Dashboard stats row (2 cards side-by-side for 'Sesi Selesai' and 'Pendapatan'). Bottom: 'Next Appointment' Hero Card showing the most immediate patient details and action buttons."
+    },
+    {
+      "name": "Expert Schedule",
+      "purpose": "Manage pending requests and view the monthly calendar.",
+      "states": {
+        "loading": "Spinner over calendar.",
+        "empty": "Empty state illustration 'Tidak ada permintaan baru'.",
+        "error": "Gagal memuat kalender."
+      },
+      "layout": "Top Tab Navigator ('Permintaan' vs 'Kalender'). 'Permintaan' tab: List of cards with 'Terima' (brandPrimary) and 'Tolak' (surfaceSecondary) buttons. 'Kalender' tab: Visual calendar widget at the top, list of that day's sessions below."
+    }
+  ],
+  "images": {
+    "home_promo_carousel_1": {
+      "url": "https://images.unsplash.com/photo-1666891827442-136490fc4140?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxjYWxtJTIwbWVudGFsJTIwaGVhbHRoJTIwdGhlcmFweSUyMGFic3RyYWN0JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3ODIwMTE1ODl8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Abstract soft pastel background for promo card"
+    },
+    "expert_avatar_placeholder": {
+      "url": "https://images.unsplash.com/photo-1714976694895-d38078c1a3c0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwyfHxmcmllbmRseSUyMHBzeWNob2xvZ2lzdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc4MjAxMTU4OXww&ixlib=rb-4.1.0&q=85",
+      "alt": "Friendly psychologist portrait"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Ensure standard iOS native components feel like SwiftUI - rounded corners (md/lg), generous padding, and no dense web layouts.",
+    "Implement the Theme Switcher requirement securely: Set up the palette variables so Teal (#0D9488) is default, but Rose, Blue, and Purple can swap in via NativeWind configuration.",
+    "For the Mood Tracker on Patient Home, use large, tactile pill buttons (Happy, Neutral, Sad) that provide haptic feedback when pressed.",
+    "In the Checkout flow, ensure the 'Double Confirmation' uses a native Bottom Sheet (e.g. @gorhom/bottom-sheet) with a glassmorphism backdrop.",
+    "When displaying Services in the Grid, use 'brandTertiary' as the background for the icon container to make it pop subtly without overwhelming the teal primary color.",
+    "Expert's 'Status Aktif' toggle must give immediate haptic feedback and visually pop to signal they are receiving requests."
+  ]
+}
